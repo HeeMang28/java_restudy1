@@ -3,6 +3,11 @@ package day5;
 interface Predator {
 	String getFood();
 }
+interface Barkable {
+    void bark();
+}
+interface BarkablePredator extends Predator, Barkable {
+}
 
 class Animal2 {
 	String name;
@@ -12,16 +17,22 @@ class Animal2 {
     }
 }
 
-class Tiger extends Animal2 implements Predator {
+class Tiger extends Animal2 implements Predator, Barkable {
 	public String getFood() {
 		return "apple";
 	}
+    public void bark() {
+        System.out.println("어흥");
+    }
 }
 
-class Lion extends Animal2 implements Predator {
-	public String getFood() {
-		return "banana";
-	}
+class Lion extends Animal implements BarkablePredator {
+    public String getFood() {
+        return "banana";
+    }
+    public void bark() {
+        System.out.println("으르렁");
+    }
 }
 
 class Crocodile extends Animal2 {
